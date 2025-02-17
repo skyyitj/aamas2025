@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="description"
+    content="RoboMIND: Establishing a Benchmark for Multi-embodiment Intelligence Normative Data in Robot Manipulation.">
+  <meta name="keywords" content="RoboMIND, Multi-embodiment Intelligence, Robot Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Training of Generalizable Visuomotor Policies via Control-Aware Augmentation</title>
+
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <!-- <link href="./static/css/googlecss.css"
+        rel="stylesheet"> -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="./static/js/jquerymin351.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    .author-block {
+        display: none;
+    }
+
+    .publication-authors:hover .author-block {
+        display: block;
+    }
+</style>
+
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://x-humanoid.com">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Efficient Training of Generalizable Visuomotor Policies via
+              Control-Aware Augmentation </h1>
+            <div class="is-size-5 publication-authors">
+                <span class="team-name"><b>Beijing Institute of Technology <p style="font-size: 70%">(hover to display full author list)</p></b></span>
+                <span class="author-block">Yinuo Zhao<sup>1,∗</sup>, Kun Wu<sup>2,3,∗</sup> Tianjiao Yi<sup>2,3,∗</sup>,
+                Zhiyuan Xu<sup>1,∗,†</sup>, Zhengping Che<sup>1,∗,†</sup>,<span class="author-block"></span> Qinru Qiu<sup>1</sup>, Chi Harold Liu<sup>1</sup>
+    
+                    <span class="icon">
+                      <svg class="svg-inline--fa fa-envelope fa-w-16" aria-hidden="true" focusable="false"
+                        data-prefix="fa" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+                        </path>
+                      </svg>
+                    
+                    </span>
+                  </sup>
+                    <span class="icon">
+                      <svg class="svg-inline--fa fa-envelope fa-w-16" aria-hidden="true" focusable="false"
+                        data-prefix="fa" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+                        </path>
+                      </svg>
+                    </span>
+                  </sup>
+                </span>
+
+
+                <div class="is-size-6 publication-authors"> 
+                  <span class="author-block"><sup>*</sup>Co-first Authors, <sup>†</sup>Corresponding Authors, 
+                    <sup> <svg class="svg-inline--fa fa-envelope fa-w-16" aria-hidden="true" focusable="false"
+                      data-prefix="fa" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512" data-fa-i2svg="">
+                      <path fill="currentColor"
+                        d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+                      </path>
+                    </svg>
+                    </sup> Project Leaders 
+                  </span>
+                 <br>
+               
+                <div class="is-size-5 publication-authors id=institute">
+                  <sup>1</sup>Beijing Institute of Technology, 
+               
+                  
+                </div>
+                 <br>           
+                </div>
+              </div>
+              
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2401.09258" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- <span class="link-block">
+                  <a href="https://arxiv.org/abs/2412.13877" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span> -->
+                <!-- Code Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://github.com/x-humanoid-robomind"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span> -->
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://zitd5je6f7j.feishu.cn/share/base/form/shrcnOF6Ww4BuRWWtxljfs0aQqh"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-database"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/teaser.mp4" type="video/mp4">
+        </video> -->
+        <div class="yush-div-center">
+          <img src="./static/images/overview.jpg" class="img-responsive">
+        </div>
+
+        <h2 class="subtitle has-text-centered">
+          We introduce <span style="font-weight: bold"> EAGLE</span>, an Efficient trAining framework for GeneraLizablE visuomotor policies.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="single-task-1">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Improving generalization is a key challenge in Embodied AI, where obtaining large-scale datasets from diverse scenarios is costly.
+              Visuomotor policies trained with weak augmentations provide only marginal improvements when applied to new environments. 
+              Strong augmentations, such as random overlay, can disrupt task-relevant information and degrade performance. 
+              To overcome these challenges, we introduce \textbf{EAGLE}—an \textbf{E}fficient tr\textbf{A}ining framework for \textbf{G}enera\textbf{L}izabl\textbf{E} visuomotor policies. 
+              EAGLE enhances generalization by applying augmentation only to control-related regions using a self-supervised, control-aware mask. 
+              It also boosts training efficiency and stability by transferring knowledge from an expert to a student policy, enabling deployment in new environments without further fine-tuning. 
+              Experiments on the DMControl Generalization Benchmark and the enhanced Robot Manipulation Distraction Benchmark demonstrate the effectiveness of our approach.</p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <!--/ Abstract. -->
+
+      <!-- Hardware Setup. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Introduction</h2>
+          
+            <p> We summarize our contributions as follows:
+              • We propose an efficient training framework for generalizable
+              visuomotor policies to achieve zero-shot generalization to
+              unseen environments with visual changes.
+              • We introduce a method to derive a control-aware mask
+              within a self-supervised reconstruction structure, eliminating the need for additional labels or reward signals.
+              • To enhance training stability and efficiency, we develop a
+              strategy to learn visuomotor policies by distilling knowledge
+              from a privileged expert pre-trained on low-level environmental states.
+              • Our extensive comparative and ablation studies across three
+              benchmarks well validate the effectiveness of our method   </p>
+
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <!-- / Hardware Setup. -->
+
+
+      <!-- RoboMIND Data Analysis. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+           <h2 class="title is-3">Control-aware Data Augmentation</h2>
+           <div class="container is-max-desktop">
+            <div class="hero-body">
+              <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/teaser.mp4" type="video/mp4">
+              </video> -->
+              <div class="yush-div-center">
+                <img src="./static/images/context_aug_model.jpg" class="img-responsive">
+              </div>
+      
+              <h2 class="subtitle has-text-centered">
+                Control-aware data augmentation module.
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / RoboMIND Data Analysis. -->
+  </section>
+
+  <section class="section" id="demo">
+    <div class="container is-max-desktop">
+      <!-- Experiment  -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Experiments</h2>
+      <!-- Experiment  -->
+      <p> We validate \ourmethod's zero-shot generalization capabilities on two challenging benchmarks. First, 
+        we evaluate \ourmethod~using the DMC-GB~\citep{hansen2021generalization}, 
+        which tests an agent's generalization ability from simple to complex environments (Easy and Hard) with background changes. 
+        In Hard settings, the background features real-world videos that differ significantly from the training environment.
+         Each method undergoes 500k training iterations, with evaluations based only on visual inputs. Then, we introduce an enhance RMDB, 
+         building on the original benchmark \citep{bertoin2022look} that includes four tasks: Push, Reach, Hammer, and Pegbox. 
+         We incorporate distraction objects in training, and vary colors/textures in five test environments for each task. 
+         RMDB presents a greater challenge as it requires robots to develop a visuomotor policy robust to visual changes in all task-irrelevant 
+         areas. We compare \ourmethod~to several SOTA algorithms, including SVEA~\citep{hansen2021stabilizing}, TLDA~\citep{yuan2022don}, 
+         VAI~\citep{wang2021unsupervised}, SGQN~\citep{bertoin2022look} in generalization ability. Besides, we develope a strong baseline 
+         SAM+E that combined SAM~\citep{kirillov2023segment} with our privilege expert.
+      </p>
+      <br>
+
+      <div id="single-task">
+        <!-- Performance on Single Tasks.. -->
+         <br>
+        <h3 class="title is-4">Success Examples of ACT on Single Tasks</h3> 
+        <!-- <p> <b>Single Task Results</b>. ACT achieves an average success rate of 30.7% (Franka), 34.0% (Tien Kung), 55.3% (AgileX) and 38.0% (UR-5e).
+        </p> -->
+        <!-- <video width="640" height="360" controls>
+          <source src="your-video.mp4" type="video/mp4">
+      </video> -->
+
+        <div class="content has-text-justified">
+            <div class="columns">
+              <div class="column has-text-centered">
+                  <p style="font-size: 125%"><b>video1</b></p>
+                  <video poster="" id="" autoplay="" controls="" muted="" loop="" height="100%" playbackrate="2.0" style="border-radius: 5px;">
+                      <source src="./static/videos/feishu1.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="column has-text-centered">
+                  <p style="font-size: 125%"><b>video2</b></p>
+                  <video poster="" id="" autoplay="" controls="" muted="" loop="" height="100%" playbackrate="2.0" style="border-radius: 5px;">
+                      <source src="./static/videos/feishu2.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="column has-text-centered">
+                  <p style="font-size: 125%"><b>video3</b></p>
+                  <video poster="" id="" autoplay="" controls="" muted="" loop="" height="100%" playbackrate="2.0" style="border-radius: 5px;">
+                      <source src="./static/videos/feishu3.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="column has-text-centered">
+                <p style="font-size: 125%"><b>video4</b></p>
+                <video poster="" id="" autoplay="" controls="" muted="" loop="" height="100%" playbackrate="2.0" style="border-radius: 5px;">
+                    <source src="./static/videos/feishu4.mp4" type="video/mp4">
+                </video>
+            </div>
+
+
+          </div>
+         
+        </div>
+
+      </div>
+      <br>
+
+
+
+  </section>
+
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{wu2024robomindbenchmarkmultiembodimentintelligence,
+        title={RoboMIND: Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation},
+        author={Kun Wu and Chengkai Hou and Jiaming Liu and Zhengping Che and Xiaozhu Ju and Zhuqin Yang and Meng Li and Yinuo Zhao and Zhiyuan Xu and Guang Yang and Zhen Zhao and Guangyu Li and Zhao Jin and Lecheng Wang and Jilei Mao and Xinhua Wang and Shichao Fan and Ning Liu and Pei Ren and Qiang Zhang and Yaoxu Lyu and Mengzhen Liu and Jingyang He and Yulin Luo and Zeyu Gao and Chenxuan Li and Chenyang Gu and Yankai Fu and Di Wu and Xingyu Wang and Sixiang Chen and Zhenyu Wang and Pengju An and Siyuan Qian and Shanghang Zhang and Jian Tang},
+        journal={arXiv preprint arXiv:2412.13877},
+        year={2024}
+      }</code></pre>
+    </div>
+    <br>
+  </section>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://arxiv.org/abs/2412.13877">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <!-- <a class="icon-link" href="https://x-humanoid-robomind.github.io/" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a> -->
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              The website template was borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
+              and <a href="https://eureka-research.github.io/">Eureka</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
